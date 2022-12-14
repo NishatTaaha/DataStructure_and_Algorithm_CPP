@@ -53,8 +53,7 @@ void deleteAtHead(node* &head){
     head=head->next;
     delete todelete;
 }
-
-void deletion(node* head, int val){
+void deletion(node* &head,int val){
     if(head==NULL){
         return;
     }
@@ -95,13 +94,13 @@ node* reverse(node* &head){
     return prevPtr;
 }
 
-node* sortingLL(node* &head){
+void sortLL(node* &head){
     node* i;
     node* j;
     i=head;
-    for(i=head;i->next!=NULL;i=i->next){
+    for(i=head;i!=NULL;i=i->next){
         for(j=i->next;j!=NULL;j=j->next){
-            if(i->data > j->data){
+            if(i->data>j->data){
                 int temp;
                 temp=i->data;
                 i->data=j->data;
@@ -111,36 +110,23 @@ node* sortingLL(node* &head){
     }
 }
 
-// void splitAFunc(node *head, int position){
-//     node *temp = head;
-//     int i = 0;
-//     while (i < 2){
-//         i = i + 1;
-//         temp = temp->next;
-//         cout << i << " ";
-//     }
-//     if (temp == NULL && temp->next == NULL){
-//         cout << "split impossible";
-//         return;
-//     }
-//     int head1 = head;
-//     int head2 = temp->next;
-//     temp->next == NULL;
-// }
-
 
 int main(){
     node *head=NULL;
-    insertAtTail(head,4);
+    insertAtHead(head,5);
     insertAtTail(head,3);
+    insertAtTail(head,2);
+    insertAtTail(head,4);
     insertAtTail(head,6);
-    insertAtTail(head,1);
     display(head);
-    sortingLL(head);   
+    sortLL(head);
     display(head);
+    // node* newNode=reverse(head);
+    // display(newNode);
+    // deleteAtHead(head);
+    // deletion(head,4);
+    // display(head);
     // splitAFunc(head,2);
     return 0;
 }
-
-
 
