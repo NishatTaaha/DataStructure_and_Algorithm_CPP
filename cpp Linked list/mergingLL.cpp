@@ -30,11 +30,10 @@ void display(node* head){
     cout<<"NULL"<<endl;
 }
 void mergeLL(node* first, node* second){
-    node* firstRef=first;
-    while(firstRef->next!=NULL){
-        firstRef=firstRef->next;
+    while(first->next!=NULL){
+        first=first->next;
     }
-    firstRef->next=second;
+    first->next=second;
 }
 int main(){
     node *first=NULL, *second=NULL;
