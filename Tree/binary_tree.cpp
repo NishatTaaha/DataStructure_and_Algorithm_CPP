@@ -1,18 +1,19 @@
 #include<iostream>
 #include<queue>
 using namespace std;
-struct Node{
+class node{
+    public:
     int data;
-    struct Node* left;
-    struct Node* right;
-    Node(int val){
+    node* left;
+    node* right;
+    node(int val){
         data=val;
         left=NULL;
         right=NULL;
     }
 };
 
-void preorder(struct  Node* root){
+void preorder(node* root){
     if(root==NULL){
         return;
     }
@@ -20,7 +21,7 @@ void preorder(struct  Node* root){
     preorder(root->left);
     preorder(root->right);
 };
-void inorder(struct Node* root){
+void inorder(node* root){
     if(root==NULL){
         return;
     }
@@ -28,7 +29,7 @@ void inorder(struct Node* root){
     cout<<root->data<<" ";
     inorder(root->right); 
 }
-void postorder(struct Node* root){
+void postorder(node* root){
     if(root==NULL){
         return;
     }
@@ -36,15 +37,15 @@ void postorder(struct Node* root){
     postorder(root->right);
     cout<<root->data<<" ";
 }
-void levelOrder(Node* root){
+void levelOrder(node* root){
     if(root==NULL){
         return;
     }
-    queue<Node*> q;
+    queue<node*> q;
     q.push(root);
     q.push(NULL);
     while(!q.empty()){
-        Node* node=q.front();
+        node* node=q.front();
         q.pop();
         if(node!=NULL){
             cout<<node->data<<"\t";
@@ -57,17 +58,17 @@ void levelOrder(Node* root){
         }
     }
 }
-int sumAtK(Node* root,int k){
+int sumAtK(node* root,int k){
     if(root==NULL){
         return -1;
     }
-    queue<Node*> q;
+    queue<node*> q;
     q.push(root);
     q.push(NULL);
     int level=0;
     int sum=0;
     while(!q.empty()){
-        Node* node=q.front();
+        node* node=q.front();
         q.pop();
         if(node!=NULL){
             if(level==k){
@@ -87,7 +88,7 @@ int sumAtK(Node* root,int k){
     }
     return sum;
 }
-int calcHeight(Node* root){
+int calcHeight(node* root){
     if(root==NULL){
         return 0;
     }
@@ -96,13 +97,13 @@ int calcHeight(Node* root){
     return max(lHeight,rHeight)+1;
 }
 int main(){
-    struct Node* root=new Node(1);
-    root->left=new Node(2);
-    root->right=new Node(3);
-    root->left->left=new Node(4);
-    root->left->right=new Node(5);   
-    root->right->left=new Node(6);   
-    root->right->right=new Node(7);  
+    node* root=new node(1);
+    root->left=new node(2);
+    root->right=new node(3);
+    root->left->left=new node(4);
+    root->left->right=new node(5);   
+    root->right->left=new node(6);   
+    root->right->right=new node(7);  
     cout<<"\n";
     cout<<"Inorder Sequence: ";
     inorder(root);
