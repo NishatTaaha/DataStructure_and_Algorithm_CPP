@@ -10,13 +10,13 @@ void bfs(int source){
     vis[source]=1;
     while(!q.empty()){
         int cur_v=q.front();
-        q.pop();
         cout<<cur_v<<" ";
-        for(int child:g[cur_v]){
+        q.pop();
+        for(int child: g[cur_v]){
             if(!vis[child]){
                 q.push(child);
                 vis[child]=1;
-                level[child]=level[cur_v]+1;
+                level[child]=level[cur_v];
             }
         }
     }
@@ -31,11 +31,7 @@ int main(){
         g[x].push_back(y);
         g[y].push_back(x);
     }
-    bfs(0);
-    // for(int i=1;i<=n;i++){
-    //     cout<<i<<": "<<level[i]<<endl;
-    // }
-
+    bfs(1);
 }
 
 
